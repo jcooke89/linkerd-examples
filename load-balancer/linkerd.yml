@@ -1,0 +1,65 @@
+namers:
+- kind: io.l5d.fs
+  rootDir: /disco
+
+routers:
+- protocol: http
+  baseDtab: /http => /$/inet/127.1/4141 & /$/inet/127.1/4142 & /$/inet/127.1/4143 & /$/inet/127.1/4144 & /$/inet/127.1/4145;
+  client:
+    failureAccrual:
+      kind: none
+  servers:
+  - port: 4140
+    ip: 0.0.0.0
+  responseClassifier:
+    kind: io.l5d.nonRetryable5XX
+
+- protocol: http
+  label: aperture
+  baseDtab: /http => /#/io.l5d.fs/aperture;
+  client:
+    loadBalancer:
+      kind: aperture
+  servers:
+  - port: 4141
+    ip: 0.0.0.0
+
+- protocol: http
+  label: ewma
+  baseDtab: /http => /#/io.l5d.fs/ewma;
+  client:
+    loadBalancer:
+      kind: ewma
+  servers:
+  - port: 4142
+    ip: 0.0.0.0
+
+- protocol: http
+  label: heap
+  baseDtab: /http => /#/io.l5d.fs/heap;
+  client:
+    loadBalancer:
+      kind: heap
+  servers:
+  - port: 4143
+    ip: 0.0.0.0
+
+- protocol: http
+  label: p2c
+  baseDtab: /http => /#/io.l5d.fs/p2c;
+  client:
+    loadBalancer:
+      kind: p2c
+  servers:
+  - port: 4144
+    ip: 0.0.0.0
+
+- protocol: http
+  label: roundRobin
+  baseDtab: /http => /#/io.l5d.fs/roundRobin;
+  client:
+    loadBalancer:
+      kind: roundRobin
+  servers:
+  - port: 4145
+    ip: 0.0.0.0

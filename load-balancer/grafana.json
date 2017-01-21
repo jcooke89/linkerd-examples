@@ -1,0 +1,1507 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "id": 2,
+  "links": [],
+  "refresh": "5s",
+  "rows": [
+    {
+      "collapse": false,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 20,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": ".99",
+              "intervalFactor": 2,
+              "legendFormat": "target success rate",
+              "refId": "D",
+              "step": 2
+            },
+            {
+              "expr": "rate(rt:none:dst:id:_:io_l5d_fs:service1:success[90s]) / (rate(rt:none:dst:id:_:io_l5d_fs:service1:failures[90s]) + rate(rt:none:dst:id:_:io_l5d_fs:service1:success[90s]))",
+              "intervalFactor": 2,
+              "legendFormat": "none",
+              "refId": "A",
+              "step": 2
+            },
+            {
+              "expr": "rate(rt:io_l5d_consecutiveFailures:dst:id:_:io_l5d_fs:service2:success[90s]) / (rate(rt:io_l5d_consecutiveFailures:dst:id:_:io_l5d_fs:service2:failures[90s]) + rate(rt:io_l5d_consecutiveFailures:dst:id:_:io_l5d_fs:service2:success[90s]))",
+              "intervalFactor": 2,
+              "legendFormat": "io.l5d.consecutiveFailures",
+              "refId": "B",
+              "step": 2
+            },
+            {
+              "expr": "rate(rt:io_l5d_successRate:dst:id:_:io_l5d_fs:service3:success[90s]) / (rate(rt:io_l5d_successRate:dst:id:_:io_l5d_fs:service3:failures[90s]) + rate(rt:io_l5d_successRate:dst:id:_:io_l5d_fs:service3:success[90s]))",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "io.l5d.successRate",
+              "refId": "C",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "success rate smoothed",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "percentunit",
+              "label": "",
+              "logBase": 1,
+              "max": 1,
+              "min": 0.93,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 21,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "{__name__=~\"^rt:aperture:srv:0_0_0_0:.*:request_latency_ms\",stat=\"avg\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "aperture",
+              "metric": "",
+              "refId": "A",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:ewma:srv:0_0_0_0:.*:request_latency_ms\",stat=\"avg\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "ewma",
+              "metric": "",
+              "refId": "B",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:heap:srv:0_0_0_0:.*:request_latency_ms\",stat=\"avg\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "heap",
+              "metric": "",
+              "refId": "C",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:p2c:srv:0_0_0_0:.*:request_latency_ms\",stat=\"avg\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "p2c",
+              "metric": "",
+              "refId": "D",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:roundRobin:srv:0_0_0_0:.*:request_latency_ms\",stat=\"avg\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "roundRobin",
+              "metric": "",
+              "refId": "E",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "avg latency comparison",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 39,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "{__name__=~\"^rt:aperture:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p99\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "aperture",
+              "metric": "",
+              "refId": "A",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:ewma:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p99\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "ewma",
+              "metric": "",
+              "refId": "B",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:heap:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p99\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "heap",
+              "metric": "",
+              "refId": "C",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:p2c:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p99\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "p2c",
+              "metric": "",
+              "refId": "D",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:roundRobin:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p99\"}",
+              "interval": "",
+              "intervalFactor": 2,
+              "legendFormat": "roundRobin",
+              "metric": "",
+              "refId": "E",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "p99 latency comparison",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": false
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "Comparisons",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "```yaml\n- protocol: http\n  client:\n    loadBalancer:\n      kind: $job\n```",
+          "editable": true,
+          "error": false,
+          "id": 22,
+          "links": [],
+          "mode": "markdown",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "aperture",
+              "value": "aperture"
+            }
+          },
+          "span": 4,
+          "title": "",
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 25,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "aperture",
+              "value": "aperture"
+            }
+          },
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"avg\"}",
+              "intervalFactor": 2,
+              "legendFormat": "avg latency",
+              "refId": "D",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p95\"}",
+              "intervalFactor": 2,
+              "legendFormat": "p95 latency",
+              "refId": "A",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p99\"}",
+              "intervalFactor": 2,
+              "legendFormat": "p99 latency",
+              "refId": "B",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"max\"}",
+              "intervalFactor": 2,
+              "legendFormat": "max latency",
+              "refId": "C",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "latency",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 24,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "aperture",
+              "value": "aperture"
+            }
+          },
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(requests{job=\"$job\"}[10s])",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "refId": "A",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "requests per instance",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "rps",
+              "label": "rps",
+              "logBase": 1,
+              "max": 50,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": "job",
+      "repeatIteration": null,
+      "repeatRowId": null,
+      "showTitle": true,
+      "title": "$job",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "```yaml\n- protocol: http\n  client:\n    loadBalancer:\n      kind: $job\n```",
+          "editable": true,
+          "error": false,
+          "id": 26,
+          "links": [],
+          "mode": "markdown",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "ewma",
+              "value": "ewma"
+            }
+          },
+          "span": 4,
+          "title": "",
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 27,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "ewma",
+              "value": "ewma"
+            }
+          },
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"avg\"}",
+              "intervalFactor": 2,
+              "legendFormat": "avg latency",
+              "refId": "D",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p95\"}",
+              "intervalFactor": 2,
+              "legendFormat": "p95 latency",
+              "refId": "A",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p99\"}",
+              "intervalFactor": 2,
+              "legendFormat": "p99 latency",
+              "refId": "B",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"max\"}",
+              "intervalFactor": 2,
+              "legendFormat": "max latency",
+              "refId": "C",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "latency",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 28,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "ewma",
+              "value": "ewma"
+            }
+          },
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(requests{job=\"$job\"}[10s])",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "refId": "A",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "requests per instance",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "rps",
+              "label": "rps",
+              "logBase": 1,
+              "max": 50,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1484958344968,
+      "repeatRowId": 2,
+      "showTitle": true,
+      "title": "$job",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "```yaml\n- protocol: http\n  client:\n    loadBalancer:\n      kind: $job\n```",
+          "editable": true,
+          "error": false,
+          "id": 29,
+          "links": [],
+          "mode": "markdown",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "heap",
+              "value": "heap"
+            }
+          },
+          "span": 4,
+          "title": "",
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 30,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "heap",
+              "value": "heap"
+            }
+          },
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"avg\"}",
+              "intervalFactor": 2,
+              "legendFormat": "avg latency",
+              "refId": "D",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p95\"}",
+              "intervalFactor": 2,
+              "legendFormat": "p95 latency",
+              "refId": "A",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p99\"}",
+              "intervalFactor": 2,
+              "legendFormat": "p99 latency",
+              "refId": "B",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"max\"}",
+              "intervalFactor": 2,
+              "legendFormat": "max latency",
+              "refId": "C",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "latency",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 31,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "heap",
+              "value": "heap"
+            }
+          },
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(requests{job=\"$job\"}[10s])",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "refId": "A",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "requests per instance",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "rps",
+              "label": "rps",
+              "logBase": 1,
+              "max": 50,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1484958344968,
+      "repeatRowId": 2,
+      "showTitle": true,
+      "title": "$job",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "```yaml\n- protocol: http\n  client:\n    loadBalancer:\n      kind: $job\n```",
+          "editable": true,
+          "error": false,
+          "id": 32,
+          "links": [],
+          "mode": "markdown",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "p2c",
+              "value": "p2c"
+            }
+          },
+          "span": 4,
+          "title": "",
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 33,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "p2c",
+              "value": "p2c"
+            }
+          },
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"avg\"}",
+              "intervalFactor": 2,
+              "legendFormat": "avg latency",
+              "refId": "D",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p95\"}",
+              "intervalFactor": 2,
+              "legendFormat": "p95 latency",
+              "refId": "A",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p99\"}",
+              "intervalFactor": 2,
+              "legendFormat": "p99 latency",
+              "refId": "B",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"max\"}",
+              "intervalFactor": 2,
+              "legendFormat": "max latency",
+              "refId": "C",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "latency",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 34,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "p2c",
+              "value": "p2c"
+            }
+          },
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(requests{job=\"$job\"}[10s])",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "refId": "A",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "requests per instance",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "rps",
+              "label": "rps",
+              "logBase": 1,
+              "max": 50,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1484958344968,
+      "repeatRowId": 2,
+      "showTitle": true,
+      "title": "$job",
+      "titleSize": "h6"
+    },
+    {
+      "collapse": false,
+      "height": "250px",
+      "panels": [
+        {
+          "content": "```yaml\n- protocol: http\n  client:\n    loadBalancer:\n      kind: $job\n```",
+          "editable": true,
+          "error": false,
+          "id": 35,
+          "links": [],
+          "mode": "markdown",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "roundRobin",
+              "value": "roundRobin"
+            }
+          },
+          "span": 4,
+          "title": "",
+          "type": "text"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 36,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "roundRobin",
+              "value": "roundRobin"
+            }
+          },
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"avg\"}",
+              "intervalFactor": 2,
+              "legendFormat": "avg latency",
+              "refId": "D",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p95\"}",
+              "intervalFactor": 2,
+              "legendFormat": "p95 latency",
+              "refId": "A",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"p99\"}",
+              "intervalFactor": 2,
+              "legendFormat": "p99 latency",
+              "refId": "B",
+              "step": 2
+            },
+            {
+              "expr": "{__name__=~\"^rt:$job:srv:0_0_0_0:.*:request_latency_ms\",stat=\"max\"}",
+              "intervalFactor": 2,
+              "legendFormat": "max latency",
+              "refId": "C",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "latency",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "ms",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": "",
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {},
+          "id": 37,
+          "legend": {
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "repeatIteration": 1484952862481,
+          "scopedVars": {
+            "job": {
+              "selected": true,
+              "text": "roundRobin",
+              "value": "roundRobin"
+            }
+          },
+          "seriesOverrides": [],
+          "span": 4,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "rate(requests{job=\"$job\"}[10s])",
+              "intervalFactor": 2,
+              "legendFormat": "",
+              "refId": "A",
+              "step": 2
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "requests per instance",
+          "tooltip": {
+            "msResolution": false,
+            "shared": true,
+            "sort": 2,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "xaxis": {
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "format": "rps",
+              "label": "rps",
+              "logBase": 1,
+              "max": 50,
+              "min": 0,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ]
+        }
+      ],
+      "repeat": null,
+      "repeatIteration": 1484958344968,
+      "repeatRowId": 2,
+      "showTitle": true,
+      "title": "$job",
+      "titleSize": "h6"
+    }
+  ],
+  "schemaVersion": 14,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "aperture + ewma + heap + p2c + roundRobin",
+          "value": [
+            "aperture",
+            "ewma",
+            "heap",
+            "p2c",
+            "roundRobin"
+          ]
+        },
+        "datasource": "prometheus",
+        "hide": 0,
+        "includeAll": true,
+        "label": "",
+        "multi": true,
+        "name": "job",
+        "options": [],
+        "query": "label_values(job)",
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Load Balancer Compare Copy",
+  "version": 11
+}

@@ -1,0 +1,40 @@
+global:
+  scrape_interval:     5s
+  evaluation_interval: 5s
+scrape_configs:
+  - job_name: 'linkerd'
+    metrics_path: /admin/metrics/prometheus
+    static_configs:
+    - targets:
+      - 'linkerd:9990'
+  - job_name: 'aperture'
+    static_configs:
+    - targets:
+      - 'aperture1:8501'
+      - 'aperture2:8501'
+      - 'aperture3:8501'
+  - job_name: 'ewma'
+    static_configs:
+    - targets:
+      - 'ewma1:8501'
+      - 'ewma2:8501'
+      - 'ewma3:8501'
+  - job_name: 'heap'
+    static_configs:
+    - targets:
+      - 'heap1:8501'
+      - 'heap2:8501'
+      - 'heap3:8501'
+  - job_name: 'p2c'
+    static_configs:
+    - targets:
+      - 'p2c1:8501'
+      - 'p2c2:8501'
+      - 'p2c3:8501'
+  - job_name: 'roundRobin'
+    static_configs:
+    - targets:
+      - 'roundRobin1:8501'
+      - 'roundRobin2:8501'
+      - 'roundRobin3:8501'
+

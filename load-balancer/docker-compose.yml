@@ -1,0 +1,126 @@
+version: '2'
+
+services:
+  server:
+    build: .
+    image: buoyantio/server
+    container_name: server
+
+  aperture1:
+    image: buoyantio/server
+    depends_on:
+      - server
+
+  aperture2:
+    image: buoyantio/server
+    depends_on:
+      - server
+
+  aperture3:
+    image: buoyantio/server
+    depends_on:
+      - server
+    command: -latency=1s
+
+  ewma1:
+    image: buoyantio/server
+    depends_on:
+      - server
+
+  ewma2:
+    image: buoyantio/server
+    depends_on:
+      - server
+
+  ewma3:
+    image: buoyantio/server
+    depends_on:
+      - server
+    command: -latency=1s
+
+  heap1:
+    image: buoyantio/server
+    depends_on:
+      - server
+
+  heap2:
+    image: buoyantio/server
+    depends_on:
+      - server
+
+  heap3:
+    image: buoyantio/server
+    depends_on:
+      - server
+    command: -latency=1s
+
+  p2c1:
+    image: buoyantio/server
+    depends_on:
+      - server
+
+  p2c2:
+    image: buoyantio/server
+    depends_on:
+      - server
+
+  p2c3:
+    image: buoyantio/server
+    depends_on:
+      - server
+    command: -latency=1s
+
+  roundrobin1:
+    image: buoyantio/server
+    depends_on:
+      - server
+    container_name: roundRobin1
+
+  roundrobin2:
+    image: buoyantio/server
+    depends_on:
+      - server
+    container_name: roundRobin2
+
+  roundrobin3:
+    image: buoyantio/server
+    depends_on:
+      - server
+    container_name: roundRobin3
+    command: -latency=1s
+
+  linkerd:
+    image: buoyantio/linkerd:rr
+    ports:
+      - 9990:9990
+    volumes:
+      - ./linkerd.yml:/io/buoyant/linkerd/config.yml:ro
+      - ./disco:/disco
+    command:
+      - "/io/buoyant/linkerd/config.yml"
+
+  prometheus:
+    image: prom/prometheus:v1.4.1
+    volumes:
+      - ./prometheus.yml:/prometheus/prometheus.yml:ro
+    command: >
+      -config.file=/prometheus/prometheus.yml
+      -storage.local.retention=12h
+    ports:
+      - 9090:9090
+
+  grafana:
+    build:
+      context: .
+      dockerfile: Dockerfile-grafana
+    ports:
+      - 3000:3000
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+
+  slow_cooker:
+    image: buoyantio/slow_cooker:1.0.1
+    entrypoint: /bin/sh
+    command: >
+      -c 'sleep 15 && slow_cooker -qps 20 -concurrency 15 -interval 5s -totalRequests 10000000 http://linkerd:4140/'
